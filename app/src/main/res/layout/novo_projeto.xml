@@ -55,6 +55,7 @@
     </com.google.android.material.appbar.MaterialToolbar>
 
     <LinearLayout
+        android:padding="24dp"
         android:layout_width="409dp"
         android:layout_height="665dp"
         android:orientation="vertical"
@@ -63,59 +64,118 @@
 
         <TextView
             android:id="@+id/tvTitulo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Título" />
-
-        <EditText
-            android:id="@+id/etTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
+            android:text="Título"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
             />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etTitulo"
+                android:inputType="textCapSentences"
+                android:padding="14dp"
+                android:textColor="@android:color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvDescricao"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrição" />
-
-        <EditText
-            android:id="@+id/etDescricao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
+            android:text="Descrição"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
             />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/etDescricao"
+                android:inputType="textMultiLine|textCapSentences"
+                android:gravity="top|start"
+                android:padding="14dp"
+                android:textColor="@android:color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvTags"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tags" />
-
-        <EditText
-            android:id="@+id/etTags"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
+            android:text="Tags"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
             />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/etTags"
+                android:inputType="textCapSentences"
+                android:padding="14dp"
+                android:textColor="@android:color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            >
 
             <TextView
                 android:id="@+id/tvInstrucoes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Instruções para IA" />
+                android:text="Instruções para IA"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
 
             <ImageView
                 android:id="@+id/ivRobo"
@@ -123,17 +183,33 @@
                 android:layout_height="24dp"
                 android:contentDescription="IA"
                 android:src="@drawable/ic_robo"
-                app:tint="@android:color/black" />
+                app:tint="@android:color/black"
+                />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/etInstrucoes"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:id="@+id/etInstrucoes"
+                android:inputType="textMultiLine|textCapSentences"
+                android:gravity="top|start"
+                android:padding="14dp"
+                android:textColor="@android:color/black"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
