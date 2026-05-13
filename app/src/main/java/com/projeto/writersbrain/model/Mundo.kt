@@ -11,6 +11,16 @@ data class Mundo (
     var dataModif: Date = Date(),
     var capitulos: MutableList<Capitulo> = mutableListOf()
 ) {
+
+    val wordCount: Int
+        get() = capitulos.sumOf { capitulo ->
+            capitulo.conteudo
+                .trim()
+                .split("\\s+".toRegex())
+                .filter { it.isNotBlank() }
+                .size
+        }
+
     val numCapitulos: Int
         get() = capitulos.size // Creio que precisará dar um get para atualizar a cada adição de capítulo
 
@@ -18,7 +28,30 @@ data class Mundo (
         return infos
     }
 
-    // Preciso fazer a função atualizarMundo como no diagrama, parte mais complicadinha
+    fun atualizarMundo(
+        titulo: String? = null,
+        descricao: String? = null,
+        tags: MutableList<String>? = null,
+        instrucoesIA: String? = null
+    ): Boolean {
+
+        titulo?.let {
+            this.titulo = it // It é o nome do padrão do parâmetro dentro do let
+        }
+        descricao?.let {
+            this.descricao = it
+        }
+        tags?.let {
+            this.tags = it
+        }
+        instrucoesIA?.let {
+            this.instrucoesIA = it
+        }
+
+        dataModif = Date()
+
+        return true
+    }
 
     fun deletarMundo(id: Int): Boolean {
         capitulos.clear() // Limpando memória

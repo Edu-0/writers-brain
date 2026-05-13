@@ -14,7 +14,40 @@ data class Card(
         return infos.nome.isNotBlank()
     }
 
-    // Faltando a função atualizarCard, provavelmente parecido com atualizarMundo
+    fun atualizarCard(
+        nome: String? = null,
+        tipo: String? = null,
+        sumario: String? = null,
+        notas: String? = null,
+        background: String? = null,
+        descricao: String? = null,
+        tags: MutableList<String>? = null
+    ): Boolean {
+
+        nome?.let {
+            this.nome = it
+        }
+        tipo?.let {
+            this.tipo = it
+        }
+        sumario?.let {
+            this.sumario = it
+        }
+        notas?.let {
+            this.notas = it
+        }
+        background?.let {
+            this.background = it
+        }
+        descricao?.let {
+            this.descricao = it
+        }
+        tags?.let {
+            this.tags = it
+        }
+
+        return true
+    }
 
     fun deletarCard(id: Int): Boolean {
         return this.id == id
