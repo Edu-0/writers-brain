@@ -9,6 +9,6 @@ class NovoProjetoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        setContentView(R.layout.novo_projeto)
+        setContentView(R.layout.activity_novo_projeto)
     }
 }

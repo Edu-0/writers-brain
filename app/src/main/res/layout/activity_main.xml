@@ -81,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTituloSecao"
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/projeto_card" />
+        tools:listitem="@layout/item_projeto_card" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabNovoProjeto"
