@@ -1,18 +1,32 @@
 package com.projeto.writersbrain.model
 
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "cards",
+    foreignKeys = [ForeignKey(
+        entity = Mundo::class,
+        parentColumns = ["id"],
+        childColumns = ["mundoId"],
+        onDelete = ForeignKey.CASCADE
+    )], indices = [Index("mundoId")])
 data class Card(
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    var mundoId: Int,
     var nome: String,
     var tipo: String,
     var sumario: String,
     var notas: String,
     var background: String,
     var descricao: String,
-    var tags: MutableList<String> = mutableListOf()
+    var tags: String = ""
 ) {
-    fun criarCard(infos: Card): Boolean {
-        return infos.nome.isNotBlank()
-    }
+    fun getTagsLista(): MutableList<String> =
+        if (tags.isBlank()) mutableListOf()
+        else tags.split(",").map { it.trim() }.toMutableList()
 
     fun atualizarCard(
         nome: String? = null,
@@ -21,7 +35,7 @@ data class Card(
         notas: String? = null,
         background: String? = null,
         descricao: String? = null,
-        tags: MutableList<String>? = null
+        tags: String? = null
     ): Boolean {
 
         nome?.let {
@@ -47,9 +61,5 @@ data class Card(
         }
 
         return true
-    }
-
-    fun deletarCard(id: Int): Boolean {
-        return this.id == id
     }
 }

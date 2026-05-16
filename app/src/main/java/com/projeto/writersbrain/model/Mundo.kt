@@ -1,40 +1,25 @@
 package com.projeto.writersbrain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Date
 
+@Entity(tableName = "mundos")
 data class Mundo (
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     var titulo: String,
     var descricao: String,
-    var tags: MutableList<String> = mutableListOf(),
+    var tags: String = "",
     var instrucoesIA: String,
-    var dataModif: Date = Date(),
-    var capitulos: MutableList<Capitulo> = mutableListOf()
+    var dataModif: Date = Date()
 ) {
-
-    val wordCount: Int
-        get() = capitulos.sumOf { capitulo ->
-            capitulo.conteudo
-                .trim()
-                .split("\\s+".toRegex())
-                .filter { it.isNotBlank() }
-                .size
-        }
-
-    val numCapitulos: Int
-        get() = capitulos.size // Creio que precisará dar um get para atualizar a cada adição de capítulo
-
-    fun criarMundo(infos: Mundo): Mundo {
-        return infos
-    }
-
     fun atualizarMundo(
         titulo: String? = null,
         descricao: String? = null,
-        tags: MutableList<String>? = null,
+        tags: String? = null,
         instrucoesIA: String? = null
     ): Boolean {
-
         titulo?.let {
             this.titulo = it // It é o nome do padrão do parâmetro dentro do let
         }
@@ -47,14 +32,15 @@ data class Mundo (
         instrucoesIA?.let {
             this.instrucoesIA = it
         }
-
         dataModif = Date()
-
         return true
     }
 
-    fun deletarMundo(id: Int): Boolean {
-        capitulos.clear() // Limpando memória
-        return this.id == id
+    fun getTagsLista(): MutableList<String> = // Como o banco não permite guardar listas, preciso fazer alguns helpers para lidar com tags
+        if (tags.isBlank()) mutableListOf()
+        else tags.split(",").map { it.trim() }.toMutableList()
+
+    fun setTagsLista(lista: MutableList<String>) {
+        tags = lista.joinToString(",")
     }
 }
